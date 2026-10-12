@@ -1,6 +1,7 @@
 import { generateMetadata } from '../layout';
 import { domainMappingsApi } from '@/lib/domain-mappings-api';
 import { headers } from 'next/headers';
+import { BRAND_NAME, LOGO_PATH } from '@/lib/brand';
 
 // Mock next/headers
 jest.mock('next/headers', () => ({
@@ -16,11 +17,10 @@ jest.mock('@/lib/domain-mappings-api', () => ({
 
 describe('RootLayout generateMetadata', () => {
   const defaultMetadata = {
-    title: 'App Starter',
-    description:
-      'A multi-tenant SaaS starter with authentication, organizations, and invites already wired up.',
+    title: BRAND_NAME,
+    description: 'Pre-visit patient briefs for doctors, with every fact linked to its source.',
     icons: {
-      icon: '/images/favicon.png',
+      icon: LOGO_PATH,
     },
   };
 

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { UnifiedHeader } from '../UnifiedHeader';
 import { usePathname } from 'next/navigation';
-import { LOGO_PATH } from '@/lib/brand';
+import { BRAND_NAME, LOGO_PATH } from '@/lib/brand';
 
 // Mock next/navigation
 jest.mock('next/navigation', () => ({
@@ -41,7 +41,7 @@ describe('UnifiedHeader', () => {
     render(<UnifiedHeader />);
     const brand = screen.getByTestId('header-brand');
     expect(brand.getAttribute('data-logo')).toBe(LOGO_PATH);
-    expect(brand.getAttribute('data-brand')).toBe('app-starter');
+    expect(brand.getAttribute('data-brand')).toBe(BRAND_NAME);
   });
 
   it('uses custom logo when customLogoUrl is provided', () => {
@@ -56,6 +56,6 @@ describe('UnifiedHeader', () => {
     render(<UnifiedHeader customLogoUrl={null} />);
     const brand = screen.getByTestId('header-brand');
     expect(brand.getAttribute('data-logo')).toBe(LOGO_PATH);
-    expect(brand.getAttribute('data-brand')).toBe('app-starter');
+    expect(brand.getAttribute('data-brand')).toBe(BRAND_NAME);
   });
 });
