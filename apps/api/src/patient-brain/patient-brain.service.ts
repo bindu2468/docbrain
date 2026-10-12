@@ -146,7 +146,31 @@ export class PatientBrainService {
     question: string,
   ): Promise<BrainQueryResponse> {
     await this.patientsService.findRecord(userId, organizationId, patientId);
+    return this.retrieve(organizationId, patientId, question);
+  }
 
+  /**
+   * Whether this patient has been sent to the brain at all. Cheap — reads
+   * Postgres only — so callers can skip HydraDB for a patient never synced.
+   */
+  async isSynced(organizationId: string, patientId: string): Promise<boolean> {
+    if (!this.gateway.isEnabled) return false;
+    const sync = await this.prisma.patientBrainSync.findFirst({
+      where: { organizationId, patientId },
+      select: { id: true },
+    });
+    return sync !== null;
+  }
+
+  /**
+   * Query the brain without an access check. Only for callers that have
+   * already authorized the patient, such as the clinical assistant.
+   */
+  async retrieve(
+    organizationId: string,
+    patientId: string,
+    question: string,
+  ): Promise<BrainQueryResponse> {
     const result = await this.gateway.query({
       collection: patientCollection(patientId),
       question,

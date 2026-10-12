@@ -145,6 +145,15 @@ class EnvironmentVariables {
   @IsString()
   @IsOptional()
   HYDRA_DB_DATABASE?: string;
+
+  /** Clinical assistant. Unset disables written answers and summaries. */
+  @IsString()
+  @IsOptional()
+  OPENROUTER_API_KEY?: string;
+
+  @IsString()
+  @IsOptional()
+  OPENROUTER_MODEL?: string;
 }
 
 /**
