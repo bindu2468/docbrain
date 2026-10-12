@@ -1,7 +1,9 @@
 /**
  * Development seed.
  *
- * Creates one demo organization with an owner, a member, and two projects.
+ * Creates one demo organization with an owner, a member, and two projects,
+ * and the synthetic Riverside Clinic used by the Patient Brain (see
+ * seed-clinic.ts).
  *
  * Idempotent — safe to run repeatedly. Records upsert on their natural keys,
  * so re-running updates rather than duplicates.
@@ -14,6 +16,7 @@ import { Pool } from 'pg';
 import * as bcrypt from 'bcrypt';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
+import { seedClinic } from './seed-clinic';
 
 // Run directly via ts-node, so nothing else has loaded the env yet. Mirrors
 // the order in prisma.config.ts: tests read .env.test, everything else .env.
@@ -121,6 +124,8 @@ async function seedDemoOrganization() {
   console.log(`Seeded organization "${organization.name}" with 2 users and 2 projects`);
   console.log(`  owner@example.com / ${DEMO_PASSWORD}  (global admin)`);
   console.log(`  member@example.com / ${DEMO_PASSWORD}`);
+
+  await seedClinic(prisma, passwordHash, { owner, member });
 }
 
 async function main() {
