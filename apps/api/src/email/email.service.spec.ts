@@ -41,7 +41,7 @@ describe('EmailService', () => {
 
     expect(mockTransporter.sendMail).toHaveBeenCalledWith(
       expect.objectContaining({
-        from: '"App Starter" <noreply@app-starter.local>',
+        from: '"DocBrain" <noreply@docbrain.local>',
       }),
     );
   });
@@ -53,7 +53,7 @@ describe('EmailService', () => {
 
     expect(mockTransporter.sendMail).toHaveBeenCalledWith(
       expect.objectContaining({
-        from: '"Custom Organization Name" <noreply@app-starter.local>',
+        from: '"Custom Organization Name" <noreply@docbrain.local>',
       }),
     );
   });

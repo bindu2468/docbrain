@@ -26,7 +26,7 @@ describe('Middleware', () => {
     global.fetch = mockFetch;
   });
 
-  it('should skip middleware for standard App Starter domains', async () => {
+  it('should skip middleware for standard DocBrain domains', async () => {
     const request = {
       headers: new Headers({ host: 'localhost:3000' }),
       nextUrl: { pathname: '/dashboard' },

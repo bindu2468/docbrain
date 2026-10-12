@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
 import { Transporter } from 'nodemailer';
+import { branding } from '../config/branding';
 
 @Injectable()
 export class EmailService {
@@ -48,9 +49,12 @@ export class EmailService {
   ): Promise<void> {
     const defaultFromEmail = this.configService.get<string>(
       'SMTP_FROM_EMAIL',
-      'noreply@app-starter.local',
+      branding.email.addresses.from,
     );
-    const defaultFromName = this.configService.get<string>('SMTP_FROM_NAME', 'App Starter');
+    const defaultFromName = this.configService.get<string>(
+      'SMTP_FROM_NAME',
+      branding.email.fromName,
+    );
 
     const fromName = options?.fromName || defaultFromName;
     const fromEmail = defaultFromEmail;

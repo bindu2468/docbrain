@@ -7,7 +7,7 @@ export default function CookiesPage() {
       <PageHeader title="Cookie Policy" description="Last updated: May 4, 2026" />
       <div className="prose prose-sm max-w-none dark:prose-invert">
         <p>
-          This policy explains how App Starter uses cookies and similar technologies to recognize
+          This policy explains how DocBrain uses cookies and similar technologies to recognize
           you when you visit our website.
         </p>
         <h2>What are cookies?</h2>

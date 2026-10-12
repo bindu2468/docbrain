@@ -104,7 +104,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl, { status: 302 });
   }
 
-  // 2. Skip middleware for standard App Starter domains and local development
+  // 2. Skip middleware for standard DocBrain domains and local development
   // (We keep existing domain logic for custom domains, but add short link check first)
 
   // 3. Short Link Check (High Priority)

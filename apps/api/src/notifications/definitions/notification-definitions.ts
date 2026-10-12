@@ -27,7 +27,7 @@ export function createNotificationDefinitions(): NotificationDefinitionModel[] {
       mandatory: true,
       category: NotificationCategory.INVITATIONS,
       displayName: 'User Invitations',
-      description: 'Receive invitations to join App Starter via email',
+      description: 'Receive invitations to join DocBrain via email',
       template: new UserInvitationEmailTemplate(),
     }),
 

@@ -85,11 +85,11 @@ export function OrganizationEmailSettingsSection({
               id="email-sender-name"
               value={emailSenderName}
               onChange={(e) => setEmailSenderName(e.target.value)}
-              placeholder="e.g. App Starter Team"
+              placeholder="e.g. Riverside Clinic"
               maxLength={100}
             />
             <p className="text-xs text-muted-foreground">
-              The name that will appear in the "From" field. Defaults to "App Starter".
+              The name that will appear in the "From" field. Defaults to "DocBrain".
             </p>
           </div>
 

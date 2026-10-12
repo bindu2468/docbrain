@@ -1,40 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Building2, Rocket, UserPlus, Users } from 'lucide-react';
+import { ArrowRight, Building2, Rocket, Stethoscope, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Get started · DocBrain',
-  description: 'Create an account, set up an organization, and invite your team.',
+  description: 'Create an account, set up your clinic, and invite your doctors.',
 };
 
-/**
- * Public onboarding page for visitors who have not signed up yet.
- *
- * Boilerplate on purpose: it is the first screen worth rewriting for a real
- * product, so it says what the starter actually does rather than standing in
- * for a marketing page that does not exist yet.
- */
+/** Public onboarding page for clinics that have not signed up yet. */
 const STEPS = [
   {
     icon: UserPlus,
     title: 'Create your account',
-    description:
-      'Sign up with an email and password, a one-time code, or Google. Verification email included.',
+    description: 'Sign up with an email and password, a one-time code, or Google.',
   },
   {
     icon: Building2,
-    title: 'Set up an organization',
+    title: 'Set up your clinic',
     description:
-      'An organization is the tenant. Everything you build is scoped to one, and you can belong to several.',
+      'Each clinic is its own workspace. Patients and their records never cross from one clinic to another.',
   },
   {
-    icon: Users,
-    title: 'Invite your team',
+    icon: Stethoscope,
+    title: 'Invite your doctors',
     description:
-      'Send invite links and assign each member a role — owner, admin, or member — from the members screen.',
+      'Invite colleagues, and have each set their specialty so every brief opens in the right lens.',
   },
 ] as const;
 
@@ -47,7 +40,7 @@ const GetStartedPage = () => (
           Get started
         </>
       }
-      description="Three steps from a fresh account to a working workspace."
+      description="Three steps from a fresh account to your first pre-visit brief."
     />
 
     <ol className="grid gap-4 sm:grid-cols-3">
@@ -75,8 +68,8 @@ const GetStartedPage = () => (
       <CardHeader>
         <CardTitle>Ready when you are</CardTitle>
         <CardDescription>
-          Creating an account takes a moment and nothing is charged — billing is not part of this
-          starter.
+          Creating an account takes a moment. This build holds synthetic patients only — do not
+          enter real patient data.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-3 sm:flex-row">
