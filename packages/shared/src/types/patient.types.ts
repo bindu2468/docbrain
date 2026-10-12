@@ -284,3 +284,56 @@ export interface ClinicianProfileResponse {
 export interface UpdateClinicianProfileRequest {
   specialty: MedicalSpecialty | null;
 }
+
+// ---------------------------------------------------------------------------
+// Patient brain (HydraDB)
+// ---------------------------------------------------------------------------
+
+/**
+ * Where a patient's records stand in the brain. `NOT_CONFIGURED` means the
+ * API has no HydraDB key — the brief still works, the brain does not.
+ */
+export type BrainSyncState = 'NOT_CONFIGURED' | 'NOT_SYNCED' | 'INDEXING' | 'READY' | 'FAILED';
+
+export interface BrainStatusResponse {
+  state: BrainSyncState;
+  /** Items sent at the last sync, by HydraDB indexing status */
+  counts: {
+    total: number;
+    searchable: number;
+    pending: number;
+    failed: number;
+  };
+  lastSyncedAt: string | null;
+}
+
+export interface BrainSyncResponse {
+  itemCount: number;
+  syncedAt: string;
+}
+
+export interface BrainQueryRequest {
+  question: string;
+}
+
+/** One retrieved passage, tied back to the record it came from when possible. */
+export interface BrainExcerpt {
+  content: string;
+  title: string;
+  relevancyScore: number | null;
+  source: ClinicalSource | null;
+}
+
+/** A link from the knowledge graph: "Prednisone —PRESCRIBED_BY→ Dr. Ruiz". */
+export interface BrainRelation {
+  source: string;
+  predicate: string;
+  target: string;
+  context: string | null;
+}
+
+export interface BrainQueryResponse {
+  question: string;
+  excerpts: BrainExcerpt[];
+  relations: BrainRelation[];
+}
