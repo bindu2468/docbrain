@@ -1,5 +1,6 @@
 /**
- * Brand assets. The logo is served from `public/images/logo.png`;
- * replace that file to rebrand.
+ * Brand assets. The logo is an SVG in `public/images`, used for both the
+ * header and the favicon; replace that file to rebrand.
  */
-export const LOGO_PATH = '/images/logo.png';
+export const BRAND_NAME = 'DocBrain';
+export const LOGO_PATH = '/images/docbrain-logo.svg';

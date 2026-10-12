@@ -14,17 +14,17 @@ import { domainMappingsApi } from '@/lib/domain-mappings-api';
 import { CustomDomainProvider } from '@/components/providers/CustomDomainProvider';
 import { CookieConsentBanner } from '@/components/consent/CookieConsentBanner';
 import { ACCESS_TOKEN_KEY } from '@/lib/auth-storage';
+import { BRAND_NAME, LOGO_PATH } from '@/lib/brand';
 
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
   const host = headersList.get('host') || '';
 
   const defaultMetadata: Metadata = {
-    title: 'App Starter',
-    description:
-      'A multi-tenant SaaS starter with authentication, organizations, and invites already wired up.',
+    title: BRAND_NAME,
+    description: 'Pre-visit patient briefs for doctors, with every fact linked to its source.',
     icons: {
-      icon: '/images/favicon.png',
+      icon: LOGO_PATH,
     },
   };
 

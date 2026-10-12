@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { UniversalLayout } from '@/components/layout/UniversalLayout';
 
 export const metadata = {
-  title: 'App Starter',
+  title: 'DocBrain',
   description:
     'A multi-tenant SaaS starter with authentication, organizations, custom domains, and notifications.',
 };

@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
-  title: 'Get started · App Starter',
+  title: 'Get started · DocBrain',
   description: 'Create an account, set up an organization, and invite your team.',
 };
 

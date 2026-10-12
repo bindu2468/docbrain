@@ -14,7 +14,7 @@ import {
   HeaderMobileMenuTrigger,
 } from '@/components/ui/navigation';
 import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/Sheet';
-import { LOGO_PATH } from '@/lib/brand';
+import { BRAND_NAME, LOGO_PATH } from '@/lib/brand';
 import { Menu, Home, Building2, Settings } from 'lucide-react';
 import { NotificationCenter } from '@/components/notifications/NotificationCenter';
 
@@ -47,8 +47,8 @@ export function UnifiedHeader({
             as={Link}
             href="/"
             logoSrc={customLogoUrl || LOGO_PATH}
-            logoAlt="App Starter"
-            brandName={customLogoUrl ? '' : 'app-starter'}
+            logoAlt={BRAND_NAME}
+            brandName={customLogoUrl ? '' : BRAND_NAME}
             logoHeight={logoHeight}
             isCustomLogo={!!customLogoUrl}
             className={customLogoUrl && !logoHeight ? 'max-h-10 w-auto' : ''}
