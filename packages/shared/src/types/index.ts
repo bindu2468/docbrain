@@ -9,3 +9,6 @@ export * from './auth.types';
 
 // Organization types
 export * from './organization.types';
+
+// Patient Brain types
+export * from './patient.types';

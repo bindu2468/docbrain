@@ -1,8 +1,9 @@
 // ============================================================================
 // App Starter schema
 //
-// Fourteen models covering identity, multi-tenancy, custom domains,
-// notifications, and one example organization-scoped vertical (Project).
+// Models covering identity, multi-tenancy, custom domains,
+// notifications, one example organization-scoped vertical (Project), and the
+// clinical records behind the Patient Brain (Patient and its history).
 // There is no billing here on purpose — see
 // docs/adr/0008-no-billing-in-the-starter.md.
 //
@@ -58,6 +59,8 @@ model User {
   notificationPreferences NotificationPreference[]
   inAppNotifications      InAppNotification[]
   createdProjects         Project[]                @relation("ProjectCreator")
+  attendedVisits          Visit[]                  @relation("VisitDoctor")
+  prescribedMedications   Medication[]             @relation("MedicationPrescriber")
 
   adminImpersonationAudits AdminImpersonationAudit[] @relation("AdminImpersonationTargetUser")
   quarantinedAudits        AdminQuarantineAudit[]    @relation("QuarantinedUser")
@@ -153,16 +156,26 @@ model Organization {
   notifications           Notification[]
   notificationPreferences NotificationPreference[]
   projects                Project[]
+  patients                Patient[]
+  visits                  Visit[]
+  transcripts             Transcript[]
+  diagnoses               Diagnosis[]
+  medications             Medication[]
+  allergies               Allergy[]
+  labResults              LabResult[]
+  treatments              Treatment[]
 
   @@map("organizations")
 }
 
 model OrganizationMember {
-  id             String   @id @default(uuid())
-  userId         String   @map("user_id")
-  organizationId String   @map("organization_id")
+  id             String            @id @default(uuid())
+  userId         String            @map("user_id")
+  organizationId String            @map("organization_id")
   role           OrgRole
-  createdAt      DateTime @default(now()) @db.Timestamptz(6)
+  // The lens a doctor reads a patient brief through. Null for non-clinical staff.
+  specialty      MedicalSpecialty?
+  createdAt      DateTime          @default(now()) @db.Timestamptz(6)
 
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
@@ -418,4 +431,240 @@ model Project {
   @@index([organizationId, archivedAt])
   @@index([createdById])
   @@map("projects")
+}
+
+// ============================================================================
+// Patient Brain — clinical records
+//
+// The organization is a clinic. Every record below is organization-scoped and
+// hangs off a Patient. Records keep links to the visit they came from (and to
+// the diagnosis they treat) so a brief can cite where each fact came from.
+//
+// This is synthetic data for a demo. Real patient data needs HIPAA-grade
+// controls (audit logging, access limited to the care team) that are not built.
+// ============================================================================
+
+enum MedicalSpecialty {
+  GENERAL_PRACTICE
+  CARDIOLOGY
+  ENDOCRINOLOGY
+  ORTHOPEDICS
+  EMERGENCY
+}
+
+enum PatientSex {
+  FEMALE
+  MALE
+  OTHER
+}
+
+enum VisitStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum AllergySeverity {
+  MILD
+  MODERATE
+  SEVERE
+}
+
+model Patient {
+  id             String     @id @default(uuid())
+  organizationId String     @map("organization_id")
+  // Medical record number, unique within the clinic
+  mrn            String
+  firstName      String     @map("first_name")
+  lastName       String     @map("last_name")
+  dateOfBirth    DateTime   @map("date_of_birth") @db.Date
+  sex            PatientSex
+  phone          String?
+  email          String?
+  archivedAt     DateTime?  @map("archived_at") @db.Timestamptz(6)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  visits       Visit[]
+  transcripts  Transcript[]
+  diagnoses    Diagnosis[]
+  medications  Medication[]
+  allergies    Allergy[]
+  labResults   LabResult[]
+  treatments   Treatment[]
+
+  @@unique([organizationId, mrn])
+  @@index([organizationId, archivedAt])
+  @@index([organizationId, lastName])
+  @@map("patients")
+}
+
+/// A scheduled or past appointment. The schedule is the SCHEDULED rows.
+model Visit {
+  id             String           @id @default(uuid())
+  organizationId String           @map("organization_id")
+  patientId      String           @map("patient_id")
+  doctorId       String           @map("doctor_id")
+  // Snapshot of the doctor's specialty at the time, so history reads correctly
+  // if their membership changes later
+  specialty      MedicalSpecialty
+  scheduledAt    DateTime         @map("scheduled_at") @db.Timestamptz(6)
+  status         VisitStatus      @default(SCHEDULED)
+  reason         String
+  notes          String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patient      Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  doctor       User         @relation("VisitDoctor", fields: [doctorId], references: [id])
+  transcript   Transcript?
+  diagnoses    Diagnosis[]
+  medications  Medication[]
+  labResults   LabResult[]
+
+  @@index([organizationId, scheduledAt])
+  @@index([organizationId, patientId, scheduledAt])
+  @@index([doctorId])
+  @@map("visits")
+}
+
+/// What was said in the room — the only place the patient's own words live.
+model Transcript {
+  id             String   @id @default(uuid())
+  organizationId String   @map("organization_id")
+  patientId      String   @map("patient_id")
+  visitId        String   @unique @map("visit_id")
+  content        String
+  recordedAt     DateTime @map("recorded_at") @db.Timestamptz(6)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patient      Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  visit        Visit        @relation(fields: [visitId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId, patientId])
+  @@map("transcripts")
+}
+
+model Diagnosis {
+  id             String            @id @default(uuid())
+  organizationId String            @map("organization_id")
+  patientId      String            @map("patient_id")
+  visitId        String?           @map("visit_id")
+  name           String
+  // ICD-10 code, when known
+  code           String?
+  specialty      MedicalSpecialty?
+  diagnosedAt    DateTime          @map("diagnosed_at") @db.Timestamptz(6)
+  resolvedAt     DateTime?         @map("resolved_at") @db.Timestamptz(6)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patient      Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  visit        Visit?       @relation(fields: [visitId], references: [id], onDelete: SetNull)
+  medications  Medication[]
+  treatments   Treatment[]
+
+  @@index([organizationId, patientId])
+  @@map("diagnoses")
+}
+
+model Medication {
+  id             String    @id @default(uuid())
+  organizationId String    @map("organization_id")
+  patientId      String    @map("patient_id")
+  visitId        String?   @map("visit_id")
+  diagnosisId    String?   @map("diagnosis_id")
+  prescribedById String?   @map("prescribed_by_id")
+  name           String
+  // Lower-case pharmacological class, e.g. "penicillins". Allergy and
+  // interaction checks match on this rather than on brand names.
+  drugClass      String?   @map("drug_class")
+  dose           String
+  frequency      String
+  startedAt      DateTime  @map("started_at") @db.Timestamptz(6)
+  stoppedAt      DateTime? @map("stopped_at") @db.Timestamptz(6)
+  stopReason     String?   @map("stop_reason")
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patient      Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  visit        Visit?       @relation(fields: [visitId], references: [id], onDelete: SetNull)
+  diagnosis    Diagnosis?   @relation(fields: [diagnosisId], references: [id], onDelete: SetNull)
+  prescribedBy User?        @relation("MedicationPrescriber", fields: [prescribedById], references: [id], onDelete: SetNull)
+
+  @@index([organizationId, patientId])
+  @@map("medications")
+}
+
+model Allergy {
+  id             String          @id @default(uuid())
+  organizationId String          @map("organization_id")
+  patientId      String          @map("patient_id")
+  substance      String
+  reaction       String
+  severity       AllergySeverity
+  recordedAt     DateTime        @map("recorded_at") @db.Timestamptz(6)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patient      Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId, patientId])
+  @@map("allergies")
+}
+
+model LabResult {
+  id             String   @id @default(uuid())
+  organizationId String   @map("organization_id")
+  patientId      String   @map("patient_id")
+  visitId        String?  @map("visit_id")
+  // Stable test identifier used to build trends, e.g. "HBA1C"
+  testCode       String   @map("test_code")
+  testName       String   @map("test_name")
+  value          Float
+  unit           String
+  referenceLow   Float?   @map("reference_low")
+  referenceHigh  Float?   @map("reference_high")
+  collectedAt    DateTime @map("collected_at") @db.Timestamptz(6)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patient      Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  visit        Visit?       @relation(fields: [visitId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId, patientId, testCode, collectedAt])
+  @@map("lab_results")
+}
+
+model Treatment {
+  id             String    @id @default(uuid())
+  organizationId String    @map("organization_id")
+  patientId      String    @map("patient_id")
+  diagnosisId    String?   @map("diagnosis_id")
+  name           String
+  // Free text: "physical therapy", "surgery", "procedure"
+  kind           String
+  startedAt      DateTime  @map("started_at") @db.Timestamptz(6)
+  endedAt        DateTime? @map("ended_at") @db.Timestamptz(6)
+  notes          String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patient      Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  diagnosis    Diagnosis?   @relation(fields: [diagnosisId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId, patientId])
+  @@map("treatments")
 }

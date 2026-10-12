@@ -3,7 +3,7 @@
 import { use, useState } from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { FolderOpen, Loader2, Plus, Settings, UserPlus } from 'lucide-react';
+import { CalendarDays, FolderOpen, Loader2, Plus, Settings, UserPlus, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -64,7 +64,19 @@ export default function OrganizationPage({ params }: PageProps) {
     <PageContainer>
       <div className="mx-auto max-w-4xl space-y-8 px-4 py-8">
         <PageHeader title={organization.name} description={organization.description || undefined}>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
+            <Button asChild>
+              <Link href={`/organizations/${organizationId}/schedule`}>
+                <CalendarDays className="mr-2 h-4 w-4" />
+                Schedule
+              </Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link href={`/organizations/${organizationId}/patients`}>
+                <Users className="mr-2 h-4 w-4" />
+                Patients
+              </Link>
+            </Button>
             {canManage && (
               <Button variant="outline" onClick={() => setInviteOpen(true)}>
                 <UserPlus className="mr-2 h-4 w-4" />
