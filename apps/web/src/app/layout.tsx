@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 
-  // Only attempt resolution if not on the main App Starter domain or localhost
+  // Only attempt resolution if not on the main DocBrain domain or localhost
   const isMainDomain = host.includes('example.com') || host.includes('localhost');
   if (!isMainDomain && host) {
     try {
@@ -74,7 +74,7 @@ export default async function RootLayout({
   let customLogoUrl: string | null = null;
   let logoHeight: number | null = null;
 
-  // Only attempt resolution if not on the main App Starter domain or localhost
+  // Only attempt resolution if not on the main DocBrain domain or localhost
   const isMainDomain = host.includes('example.com') || host.includes('localhost');
   if (!isMainDomain && host) {
     try {

@@ -158,7 +158,7 @@ async function bootstrap() {
   const isProduction = configService.get<string>('NODE_ENV') === 'production';
   if (!isProduction) {
     const swaggerConfig = new DocumentBuilder()
-      .setTitle('App Starter API')
+      .setTitle('DocBrain API')
       .setDescription('Multi-tenant SaaS starter API')
       .setVersion('0.1.0')
       .addBearerAuth()

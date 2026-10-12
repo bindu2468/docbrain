@@ -6,7 +6,7 @@ export class AppService {
   constructor(private readonly prisma: PrismaService) {}
 
   getHello(): string {
-    return 'App Starter API is running!';
+    return 'DocBrain API is running!';
   }
 
   async getHealth() {

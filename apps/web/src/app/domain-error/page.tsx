@@ -27,14 +27,14 @@ export default async function DomainErrorPage({
           <h1 className="text-3xl font-extrabold text-gray-900 mb-2">Domain Not Active</h1>
           <p className="text-gray-600">
             {reason === 'not_found'
-              ? `The domain "${domain}" is not currently associated with any organization on App Starter.`
+              ? `The domain "${domain}" is not currently associated with any clinic on DocBrain.`
               : `We couldn't verify the configuration for "${domain}".`}
           </p>
         </div>
 
         <div className="space-y-4">
           <p className="text-sm text-gray-500">
-            If you are the administrator of this domain, please check your App Starter dashboard
+            If you are the administrator of this domain, please check your DocBrain dashboard
             settings and DNS configuration.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -42,7 +42,7 @@ export default async function DomainErrorPage({
               href={process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}
               className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700"
             >
-              Go to App Starter Dashboard
+              Go to DocBrain
             </Link>
             <Link
               href="mailto:support@example.com"

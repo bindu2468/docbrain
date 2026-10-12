@@ -61,8 +61,8 @@ describe('OrganizationInvitesService', () => {
     get: jest.fn((key: string, defaultValue?: any) => {
       const config: Record<string, any> = {
         FRONTEND_URL: 'http://localhost:3000',
-        SMTP_FROM_EMAIL: 'noreply@app-starter.local',
-        SMTP_FROM_NAME: 'App Starter',
+        SMTP_FROM_EMAIL: 'noreply@docbrain.local',
+        SMTP_FROM_NAME: 'DocBrain',
       };
       return config[key] || defaultValue;
     }),

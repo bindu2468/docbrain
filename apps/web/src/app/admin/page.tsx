@@ -403,7 +403,7 @@ export default function AdminDashboard() {
     <div className="flex flex-col gap-6">
       <PageHeader
         title="Admin Dashboard"
-        description="Monitor App Starter usage across users, events, sessions, speakers, and recent activity."
+        description="Monitor DocBrain usage across users, events, sessions, speakers, and recent activity."
       />
 
       <Tabs value={activeTab} onValueChange={handleTabChange}>

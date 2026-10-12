@@ -23,8 +23,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "App Starter API is running!"', () => {
-      expect(appController.getHello()).toBe('App Starter API is running!');
+    it('should return "DocBrain API is running!"', () => {
+      expect(appController.getHello()).toBe('DocBrain API is running!');
     });
   });
 });

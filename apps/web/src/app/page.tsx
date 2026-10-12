@@ -1,37 +1,39 @@
 import Link from 'next/link';
-import { Bell, Building2, Globe, Users } from 'lucide-react';
+import { Brain, History, ShieldAlert, Stethoscope } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { UniversalLayout } from '@/components/layout/UniversalLayout';
+import { BRAND_NAME } from '@/lib/brand';
 
 export const metadata = {
-  title: 'DocBrain',
+  title: BRAND_NAME,
   description:
-    'A multi-tenant SaaS starter with authentication, organizations, custom domains, and notifications.',
+    'Pre-visit patient briefs for doctors: allergies first, what changed since the last visit, and every fact linked to its source.',
 };
 
 const CAPABILITIES = [
   {
-    icon: Users,
-    title: 'Auth and organizations',
+    icon: ShieldAlert,
+    title: 'Allergies and safety flags first',
     description:
-      'Email, OTP, and Google sign-in. Organizations with owner, admin, and member roles, invites, and impersonation with an audit trail.',
+      'Allergies are always shown, never filtered. Rule-based checks flag allergy conflicts, drug interactions, and records that contradict each other.',
   },
   {
-    icon: Bell,
-    title: 'Notifications',
+    icon: History,
+    title: 'What changed since your last visit',
     description:
-      'Email and in-app delivery, with per-user channel preferences and per-tenant sender identity.',
+      'New labs, medications started by other doctors, missed appointments, and lab trends — measured from the last time you saw the patient.',
   },
   {
-    icon: Globe,
-    title: 'Custom domains',
-    description: 'Per-tenant domains with DNS verification and white-label branding.',
+    icon: Stethoscope,
+    title: 'One patient, every specialty',
+    description:
+      'A cardiologist and an endocrinologist read the same record through their own lens, so a link between their specialties stands out.',
   },
   {
-    icon: Building2,
-    title: 'A worked example',
+    icon: Brain,
+    title: 'Ask the patient brain',
     description:
-      'Projects show the full pattern — tenant scoping, role guards, visibility — in a form small enough to read and replace.',
+      "Ask in plain language. Answers come from the patient's own records, searched with HydraDB, and cite the record behind every claim.",
   },
 ];
 
@@ -45,15 +47,19 @@ export default function HomePage() {
       <main className="mx-auto max-w-5xl px-4 py-20">
         <section className="space-y-6 text-center">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Ship the SaaS, not the scaffolding
+            Know your patient before you walk in
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            A production-shaped starter: NestJS and Next.js in a Turborepo, with multi-tenancy,
-            custom domains, and notifications already wired together. Billing is left to you.
+            {BRAND_NAME} turns a scattered chart into a 30-second pre-visit brief: allergies first,
+            what changed since the last visit, and what other doctors did — with every fact linked
+            to the record it came from.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Button asChild size="lg">
-              <Link href="/login">Get started</Link>
+              <Link href="/login">Sign in</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/get-started">How it works</Link>
             </Button>
           </div>
         </section>
@@ -61,14 +67,19 @@ export default function HomePage() {
         <section className="mt-20 grid gap-8 sm:grid-cols-2">
           {CAPABILITIES.map(({ icon: Icon, title, description }) => (
             <div key={title} className="flex gap-4">
-              <Icon className="mt-1 h-6 w-6 shrink-0 text-muted-foreground" />
+              <Icon className="mt-1 h-6 w-6 shrink-0 text-teal" aria-hidden="true" />
               <div className="space-y-1">
-                <h2 className="font-medium">{title}</h2>
+                <h2 className="text-base font-medium">{title}</h2>
                 <p className="text-sm text-muted-foreground">{description}</p>
               </div>
             </div>
           ))}
         </section>
+
+        <p className="mt-16 text-center text-xs text-muted-foreground">
+          Decision support, not diagnosis — the doctor decides. This build holds synthetic patients
+          only.
+        </p>
       </main>
     </UniversalLayout>
   );

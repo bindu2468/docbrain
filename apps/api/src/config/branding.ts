@@ -1,5 +1,5 @@
 /**
- * Branding configuration for App Starter API
+ * Branding configuration for the DocBrain API
  *
  * This file centralizes all branding-related strings and values.
  * Used for easy rebranding and future localization/i18n support.
@@ -9,7 +9,7 @@ export const branding = {
   /**
    * Application name
    */
-  appName: 'App Starter',
+  appName: 'DocBrain',
 
   /**
    * Email configuration
@@ -19,22 +19,22 @@ export const branding = {
      * Email addresses
      */
     addresses: {
-      from: 'noreply@app-starter.local',
-      support: 'support@app-starter.local',
-      domain: 'app-starter.local',
+      from: 'noreply@docbrain.local',
+      support: 'support@docbrain.local',
+      domain: 'docbrain.local',
     },
 
     /**
      * Default sender names
      */
-    fromName: 'App Starter',
-    fromNameDev: 'App Starter Dev',
+    fromName: 'DocBrain',
+    fromNameDev: 'DocBrain Dev',
 
     /**
      * Logo and alt text
      */
     logo: {
-      altText: 'App Starter Logo',
+      altText: 'DocBrain Logo',
       defaultAltText: 'Organization Logo',
     },
 
@@ -42,8 +42,8 @@ export const branding = {
      * Email template text
      */
     templates: {
-      defaultTitle: 'App Starter',
-      copyright: (year: number) => `© ${year} App Starter. All rights reserved.`,
+      defaultTitle: 'DocBrain',
+      copyright: (year: number) => `© ${year} DocBrain. All rights reserved.`,
       helpText: (contactEmail: string) => `Need help? Contact us at ${contactEmail}`,
     },
   },
@@ -52,13 +52,12 @@ export const branding = {
    * Email subject lines
    */
   emailSubjects: {
-    verification: 'Verify your App Starter email address',
-    passwordReset: 'App Starter - Password Reset Request',
-    otpVerification: 'Your App Starter Verification Code',
+    verification: 'Verify your DocBrain email address',
+    passwordReset: 'DocBrain - Password Reset Request',
+    otpVerification: 'Your DocBrain Verification Code',
     userInvitation: (organizationName: string) =>
-      `You're invited to join ${organizationName} on App Starter`,
-    invitationAccepted: (organizationName: string) =>
-      `Welcome to ${organizationName} on App Starter`,
+      `You're invited to join ${organizationName} on DocBrain`,
+    invitationAccepted: (organizationName: string) => `Welcome to ${organizationName} on DocBrain`,
   },
 
   /**
@@ -67,25 +66,25 @@ export const branding = {
   emailBody: {
     verification: {
       greeting: (firstName: string) => `Hi ${firstName},`,
-      signupThanks: 'Thank you for signing up for App Starter!',
+      signupThanks: 'Thank you for signing up for DocBrain!',
       verifyPrompt: 'Please verify your email address by clicking the button below:',
-      ignoreNotice: "If you didn't create a App Starter account, you can safely ignore this email.",
+      ignoreNotice: "If you didn't create a DocBrain account, you can safely ignore this email.",
     },
     passwordReset: {
       resetPrompt:
-        'We received a request to reset your password for your App Starter account. If you made this request, click the button below to reset your password:',
+        'We received a request to reset your password for your DocBrain account. If you made this request, click the button below to reset your password:',
     },
     otpVerification: {
-      codePrompt: 'Your verification code for App Starter is:',
+      codePrompt: 'Your verification code for DocBrain is:',
     },
     userInvitation: {
       invitationText: (inviterName: string, organizationName: string, roleName: string) =>
-        `${inviterName} has invited you to join ${organizationName} on App Starter as a ${roleName}.`,
-      welcomeText: 'Welcome to App Starter!',
+        `${inviterName} has invited you to join ${organizationName} on DocBrain as a ${roleName}.`,
+      welcomeText: 'Welcome to DocBrain!',
     },
     invitationAccepted: {
       welcomeText: (organizationName: string, roleName: string) =>
-        `Congratulations! You have successfully joined ${organizationName} on App Starter as a ${roleName}.`,
+        `Congratulations! You have successfully joined ${organizationName} on DocBrain as a ${roleName}.`,
     },
   },
 
@@ -93,7 +92,7 @@ export const branding = {
    * Service defaults
    */
   service: {
-    defaultOrganizationName: 'App Starter',
+    defaultOrganizationName: 'DocBrain',
   },
 
   /**
