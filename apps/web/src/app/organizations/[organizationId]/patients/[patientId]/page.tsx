@@ -8,11 +8,13 @@ import { MEDICAL_SPECIALTY_LABELS, type MedicalSpecialty } from '@app-starter/sh
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { PageContainer } from '@/components/layout/PageContainer';
-import { PatientBrainPanel } from '@/components/patients/PatientBrainPanel';
+import { AssistantSummaryCard } from '@/components/patients/AssistantSummaryCard';
+import { PatientBrainPanel, type AskRequest } from '@/components/patients/PatientBrainPanel';
 import { PatientBrief } from '@/components/patients/PatientBrief';
 import { PatientRecord } from '@/components/patients/PatientRecord';
 import { SpecialtySelect } from '@/components/patients/SpecialtySelect';
 import { SEX_LABELS, formatDateOnly } from '@/lib/clinical-format';
+import { clinicalAssistantApi } from '@/lib/clinical-assistant-api';
 import { patientsApi } from '@/lib/patients-api';
 
 interface PageProps {
@@ -28,6 +30,20 @@ const PatientPage = ({ params }: PageProps) => {
     queryKey: ['patient-brief', organizationId, patientId, specialty ?? 'own'],
     queryFn: () => patientsApi.getBrief(organizationId, patientId, specialty),
   });
+
+  const [askRequest, setAskRequest] = useState<AskRequest | undefined>(undefined);
+
+  const { data: assistantConfig } = useQuery({
+    queryKey: ['assistant-config', organizationId],
+    queryFn: () => clinicalAssistantApi.getConfig(organizationId),
+    staleTime: Infinity,
+  });
+  const isAssistantEnabled = assistantConfig?.isEnabled ?? false;
+
+  const handleAskQuestion = (question: string) => {
+    setAskRequest({ question, nonce: Date.now() });
+    document.getElementById('ask-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const { data: record } = useQuery({
     queryKey: ['patient-record', organizationId, patientId],
@@ -101,9 +117,28 @@ const PatientPage = ({ params }: PageProps) => {
           </p>
         )}
 
-        <PatientBrief brief={brief} />
+        <PatientBrief
+          brief={brief}
+          afterAllergies={
+            isAssistantEnabled && (
+              <AssistantSummaryCard
+                organizationId={organizationId}
+                patientId={patientId}
+                specialty={specialty}
+                onAskQuestion={handleAskQuestion}
+              />
+            )
+          }
+        />
 
-        <PatientBrainPanel organizationId={organizationId} patientId={patientId} />
+        <div id="ask-panel" className="scroll-mt-24">
+          <PatientBrainPanel
+            organizationId={organizationId}
+            patientId={patientId}
+            isAssistantEnabled={isAssistantEnabled}
+            askRequest={askRequest}
+          />
+        </div>
 
         <Separator />
 

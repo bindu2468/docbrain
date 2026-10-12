@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { CalendarClock, History, Stethoscope, Users } from 'lucide-react';
 import {
   MEDICAL_SPECIALTY_LABELS,
@@ -43,13 +44,24 @@ const ChangeRow = ({ change }: { change: BriefChange }) => (
   </li>
 );
 
+interface PatientBriefProps {
+  brief: PatientBriefResponse;
+  /**
+   * Rendered straight after the allergies — the AI summary goes here, so
+   * nothing generated ever sits above the allergy banner.
+   */
+  afterAllergies?: ReactNode;
+}
+
 /**
  * The pre-visit brief. Allergies first, then flags, then what changed — the
  * order a doctor needs it in the minute before walking into the room.
  */
-export const PatientBrief = ({ brief }: { brief: PatientBriefResponse }) => (
+export const PatientBrief = ({ brief, afterAllergies }: PatientBriefProps) => (
   <div className="space-y-6">
     <AllergyBanner allergies={brief.allergies} />
+
+    {afterAllergies}
 
     <div className="grid gap-6 lg:grid-cols-2">
       <SafetyFlagList flags={brief.safetyFlags} />

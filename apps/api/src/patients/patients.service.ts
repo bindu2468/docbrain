@@ -120,14 +120,29 @@ export class PatientsService {
     patientId: string,
     specialty?: MedicalSpecialty,
   ): Promise<PatientBriefResponse> {
+    const { brief } = await this.getRecordWithBrief(userId, organizationId, patientId, specialty);
+    return brief;
+  }
+
+  /**
+   * The full record and its brief from one access check and one load, for
+   * callers that need both (the clinical assistant).
+   */
+  async getRecordWithBrief(
+    userId: string,
+    organizationId: string,
+    patientId: string,
+    specialty?: MedicalSpecialty,
+  ): Promise<{ record: PatientRecordResponse; brief: PatientBriefResponse }> {
     const member = await this.requireMember(userId, organizationId);
     const record = await this.loadRecord(organizationId, patientId);
-
-    return buildPatientBrief(record, {
+    const brief = buildPatientBrief(record, {
       specialty: specialty ?? member.specialty,
       viewerId: userId,
       now: new Date(),
     });
+
+    return { record, brief };
   }
 
   async getSchedule(

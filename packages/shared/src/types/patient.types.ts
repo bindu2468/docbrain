@@ -337,3 +337,56 @@ export interface BrainQueryResponse {
   excerpts: BrainExcerpt[];
   relations: BrainRelation[];
 }
+
+// ---------------------------------------------------------------------------
+// Clinical assistant (LLM via OpenRouter)
+// ---------------------------------------------------------------------------
+
+export interface AssistantConfigResponse {
+  isEnabled: boolean;
+  /** OpenRouter model id, e.g. "anthropic/claude-sonnet-5.5" */
+  model: string | null;
+}
+
+/**
+ * A numbered piece of context the model was given. The model cites it as
+ * `[n]`; `source` links back to the record when there is one.
+ */
+export interface AssistantCitation {
+  marker: number;
+  title: string;
+  source: ClinicalSource | null;
+}
+
+/** Where the answer's context came from */
+export type AssistantContextOrigin = 'PATIENT_BRAIN' | 'RECORD';
+
+export interface AssistantAnswerRequest {
+  question: string;
+}
+
+export interface AssistantAnswerResponse {
+  question: string;
+  /** Markdown-free prose with `[n]` citation markers */
+  answer: string;
+  /** Only the citations the answer actually uses, in marker order */
+  citations: AssistantCitation[];
+  contextOrigin: AssistantContextOrigin;
+  model: string;
+}
+
+export interface SuggestedQuestion {
+  question: string;
+  /** Why it is worth asking, with `[n]` markers */
+  rationale: string;
+}
+
+export interface PatientSummaryResponse {
+  specialty: MedicalSpecialty | null;
+  /** A short pre-visit narrative with `[n]` citation markers */
+  summary: string;
+  suggestedQuestions: SuggestedQuestion[];
+  citations: AssistantCitation[];
+  model: string;
+  generatedAt: string;
+}
