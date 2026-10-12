@@ -8,6 +8,7 @@ import { MEDICAL_SPECIALTY_LABELS, type MedicalSpecialty } from '@app-starter/sh
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { PageContainer } from '@/components/layout/PageContainer';
+import { PatientBrainPanel } from '@/components/patients/PatientBrainPanel';
 import { PatientBrief } from '@/components/patients/PatientBrief';
 import { PatientRecord } from '@/components/patients/PatientRecord';
 import { SpecialtySelect } from '@/components/patients/SpecialtySelect';
@@ -101,6 +102,8 @@ const PatientPage = ({ params }: PageProps) => {
         )}
 
         <PatientBrief brief={brief} />
+
+        <PatientBrainPanel organizationId={organizationId} patientId={patientId} />
 
         <Separator />
 

@@ -167,7 +167,7 @@ export const PatientBrief = ({ brief }: { brief: PatientBriefResponse }) => (
       </section>
 
       <section aria-labelledby="visits-heading" className="space-y-2 text-sm">
-        <h2 id="visits-heading" className="flex items-center gap-2 font-semibold">
+        <h2 id="visits-heading" className="flex items-center gap-2 text-sm font-semibold">
           <CalendarClock className="h-4 w-4" aria-hidden="true" />
           Visits
         </h2>

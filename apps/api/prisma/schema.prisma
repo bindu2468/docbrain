@@ -164,6 +164,7 @@ model Organization {
   allergies               Allergy[]
   labResults              LabResult[]
   treatments              Treatment[]
+  patientBrainSyncs       PatientBrainSync[]
 
   @@map("organizations")
 }
@@ -487,7 +488,7 @@ model Patient {
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
-  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organization Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   visits       Visit[]
   transcripts  Transcript[]
   diagnoses    Diagnosis[]
@@ -495,6 +496,7 @@ model Patient {
   allergies    Allergy[]
   labResults   LabResult[]
   treatments   Treatment[]
+  brainSync    PatientBrainSync?
 
   @@unique([organizationId, mrn])
   @@index([organizationId, archivedAt])
@@ -667,4 +669,26 @@ model Treatment {
 
   @@index([organizationId, patientId])
   @@map("treatments")
+}
+
+/// What was last sent to the patient brain (HydraDB) for one patient. The
+/// brain is a derived copy of the records above; Postgres stays the source of
+/// truth, and this row is how status checks know which items to ask about.
+model PatientBrainSync {
+  id             String   @id @default(uuid())
+  organizationId String   @map("organization_id")
+  patientId      String   @unique @map("patient_id")
+  // HydraDB collection holding this patient's items
+  collection     String
+  itemIds        String[] @map("item_ids")
+  // Items that should be gone but HydraDB would not delete yet (it refuses to
+  // delete a source that is still indexing). Retried on the next sync.
+  staleItemIds   String[] @default([]) @map("stale_item_ids")
+  syncedAt       DateTime @map("synced_at") @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patient      Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@map("patient_brain_syncs")
 }

@@ -136,6 +136,15 @@ class EnvironmentVariables {
   @IsString()
   @IsOptional()
   R2_PUBLIC_URL?: string;
+
+  /** Patient brain. Unset disables it; the pre-visit brief works without it. */
+  @IsString()
+  @IsOptional()
+  HYDRA_DB_API_KEY?: string;
+
+  @IsString()
+  @IsOptional()
+  HYDRA_DB_DATABASE?: string;
 }
 
 /**
