@@ -1,4 +1,4 @@
-import { UserOrganization, OrgRole } from '@app-starter/shared';
+import { UserOrganization, OrgRole } from '@docbrain/shared';
 
 /**
  * User organization DTO implementing shared UserOrganization interface

@@ -17,7 +17,7 @@ import {
   AssistantConfigResponse,
   PatientSummaryResponse,
   TokenPayload,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { EmailVerifiedGuard } from '../auth/email-verified.guard';
 import { ClinicalAssistantService } from './clinical-assistant.service';

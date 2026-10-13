@@ -8,7 +8,7 @@ import type {
   AssistantAnswerResponse,
   BrainQueryResponse,
   BrainStatusResponse,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

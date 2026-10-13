@@ -3,7 +3,7 @@ import type {
   BrainQueryResponse,
   BrainStatusResponse,
   BrainSyncResponse,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { apiClient } from './api-client';
 
 /** Patient brain (HydraDB) API, scoped to one patient. */

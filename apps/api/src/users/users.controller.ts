@@ -21,7 +21,7 @@ import { UsersService } from './users.service';
 import { UpdateUserProfileDto } from './dto/update-user-profile.dto';
 import { UserProfileResponseDto } from './dto/user-profile-response.dto';
 import { PublicUserDto } from './dto/public-user.dto';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 
 @Controller('users')
 export class UsersController {

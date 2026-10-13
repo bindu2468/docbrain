@@ -49,8 +49,8 @@ append `?sslmode=require`.
 **Verify:**
 
 ```bash
-pnpm --filter @app-starter/api exec prisma migrate deploy
-pnpm --filter @app-starter/api exec prisma studio   # browse the data
+pnpm --filter @docbrain/api exec prisma migrate deploy
+pnpm --filter @docbrain/api exec prisma studio   # browse the data
 ```
 
 ---
@@ -117,8 +117,8 @@ SMTP_HOST=localhost
 SMTP_PORT=1025
 SMTP_USER=
 SMTP_PASSWORD=
-SMTP_FROM_EMAIL=noreply@app-starter.local
-SMTP_FROM_NAME=App Starter
+SMTP_FROM_EMAIL=noreply@docbrain.local
+SMTP_FROM_NAME=DocBrain
 ```
 
 **Local:** [Mailpit](#mailpit-local-email) catches everything, so no
@@ -381,8 +381,8 @@ mkcert -install
 mkcert localhost 127.0.0.1
 ```
 
-Then `pnpm --filter @app-starter/api dev:https` and
-`pnpm --filter @app-starter/web dev:https`.
+Then `pnpm --filter @docbrain/api dev:https` and
+`pnpm --filter @docbrain/web dev:https`.
 
 Paths are resolved relative to the API's working directory. Never commit the
 generated `.pem` files — `*.pem` is gitignored.

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { RICH_TEXT_HTML_MAX, isRichTextEmpty, richTextToPlainText } from '@app-starter/shared';
+import { RICH_TEXT_HTML_MAX, isRichTextEmpty, richTextToPlainText } from '@docbrain/shared';
 
 /**
  * A rich-text (sanitized HTML) form field.

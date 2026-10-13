@@ -1,5 +1,5 @@
 import { IsOptional, IsString, MinLength, MaxLength } from 'class-validator';
-import { FULL_BIO_MAX_LENGTH, RICH_TEXT_HTML_MAX } from '@app-starter/shared';
+import { FULL_BIO_MAX_LENGTH, RICH_TEXT_HTML_MAX } from '@docbrain/shared';
 import { IsRichTextWithinLength } from '../../common/validators/rich-text-length.validator';
 
 export class UpdateUserProfileDto {

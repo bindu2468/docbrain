@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
-  transpilePackages: ['@app-starter/shared'],
+  transpilePackages: ['@docbrain/shared'],
   // Next.js automatically loads .env files, no need to manually configure here
   
   // Image configuration

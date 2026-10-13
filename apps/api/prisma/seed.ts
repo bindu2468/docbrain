@@ -7,7 +7,7 @@
  * Idempotent — safe to run repeatedly. Records upsert on their natural keys,
  * so re-running updates rather than duplicates.
  *
- *   pnpm --filter @app-starter/api prisma:seed
+ *   pnpm --filter @docbrain/api prisma:seed
  */
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';

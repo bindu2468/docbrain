@@ -4,7 +4,7 @@ import {
   MEDICAL_SPECIALTY_LABELS,
   PatientRecordResponse,
   SafetyFlag,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 
 /**
  * Turns a patient's Postgres records into HydraDB knowledge items plus an

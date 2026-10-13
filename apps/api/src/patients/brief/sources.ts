@@ -7,7 +7,7 @@ import {
   MedicationRecord,
   TranscriptRecord,
   VisitRecord,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 
 /**
  * Builders for the `ClinicalSource` attached to every brief item, so the UI

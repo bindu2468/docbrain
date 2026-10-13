@@ -34,7 +34,7 @@ import { AuthResponseDto } from './dto/auth-response.dto';
 
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { GoogleAuthGuard } from './google-auth.guard';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 import {
   EmailAlreadyExistsException,
   InvalidCredentialsException,

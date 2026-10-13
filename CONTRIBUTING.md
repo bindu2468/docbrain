@@ -84,7 +84,7 @@ caller first. See [`docs/roles-and-permissions-guide.md`](./docs/roles-and-permi
 Edit `apps/api/prisma/schema.prisma`, then:
 
 ```bash
-pnpm --filter @app-starter/api exec prisma migrate dev --name describe_your_change
+pnpm --filter @docbrain/api exec prisma migrate dev --name describe_your_change
 ```
 
 Commit the generated migration. Use `TIMESTAMPTZ` for timestamps.

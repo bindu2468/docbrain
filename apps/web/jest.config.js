@@ -13,7 +13,7 @@ const customJestConfig = {
   testTimeout: 15000,
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '^@app-starter/shared$': '<rootDir>/../../packages/shared/src',
+    '^@docbrain/shared$': '<rootDir>/../../packages/shared/src',
   },
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',

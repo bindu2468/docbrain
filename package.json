@@ -1,5 +1,5 @@
 {
-  "name": "app-starter",
+  "name": "docbrain",
   "version": "0.0.0",
   "private": true,
   "description": "A multi-tenant SaaS starter: NestJS, Next.js, and Prisma in a Turborepo",
@@ -8,8 +8,8 @@
     "bootstrap": "./scripts/bootstrap.sh",
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "start:api": "pnpm --filter @app-starter/api run start:prod",
-    "start:web": "pnpm --filter @app-starter/web run start",
+    "start:api": "pnpm --filter @docbrain/api run start:prod",
+    "start:web": "pnpm --filter @docbrain/web run start",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
     "test": "turbo run test",

@@ -1,5 +1,5 @@
 import { ShieldAlert, ShieldCheck } from 'lucide-react';
-import type { AllergyRecord } from '@app-starter/shared';
+import type { AllergyRecord } from '@docbrain/shared';
 import { Badge } from '@/components/ui/badge';
 import { recordAnchor } from '@/lib/clinical-format';
 import { cn } from '@/lib/utils';

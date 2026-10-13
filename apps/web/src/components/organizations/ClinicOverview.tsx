@@ -12,7 +12,7 @@ import {
   Users,
   type LucideIcon,
 } from 'lucide-react';
-import { MEDICAL_SPECIALTY_LABELS, OrgRole } from '@app-starter/shared';
+import { MEDICAL_SPECIALTY_LABELS, OrgRole } from '@docbrain/shared';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';

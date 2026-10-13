@@ -6,7 +6,7 @@ import {
   isRichTextEmpty,
   isRichTextHtml,
   plainTextToRichTextHtml,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 
 /**
  * Which allowlist a description field is sanitized against.

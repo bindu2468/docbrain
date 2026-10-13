@@ -1,4 +1,4 @@
-import type { ApiError } from '@app-starter/shared';
+import type { ApiError } from '@docbrain/shared';
 
 /**
  * Checks if an error is an ApiError

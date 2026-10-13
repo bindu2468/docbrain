@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Patch, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import type { Request } from 'express';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 import { AdminDashboardService } from './admin-dashboard.service';
 import { AdminImpersonationService } from '../admin-impersonation/admin-impersonation.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';

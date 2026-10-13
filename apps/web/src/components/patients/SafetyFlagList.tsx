@@ -1,5 +1,5 @@
 import { AlertTriangle } from 'lucide-react';
-import type { SafetyFlag, SafetyFlagKind } from '@app-starter/shared';
+import type { SafetyFlag, SafetyFlagKind } from '@docbrain/shared';
 import { cn } from '@/lib/utils';
 import { SourceLinks } from './SourceLink';
 

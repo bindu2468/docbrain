@@ -6,7 +6,7 @@ import {
   MedicalSpecialty,
   PatientBriefResponse,
   SuggestedQuestion,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { BrainKnowledgeItem } from '../patient-brain/brain-documents';
 import { allergySource, labSource, medicationSource } from '../patients/brief/sources';
 

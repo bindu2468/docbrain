@@ -6,7 +6,7 @@ import {
   PatientRecordResponse,
   TranscriptRecord,
   VisitRecord,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 
 /** Builders for brief tests. Each returns a valid record; override what matters. */
 

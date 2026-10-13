@@ -1,4 +1,4 @@
-import { AuthResponse, AuthUser } from '@app-starter/shared';
+import { AuthResponse, AuthUser } from '@docbrain/shared';
 import { apiClient, ApiError } from './api-client';
 
 export interface RequestOtpRequest {

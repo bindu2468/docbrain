@@ -9,7 +9,7 @@ import {
   isRichTextHtml,
   plainTextToRichTextHtml,
   richTextToPlainText,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 
 describe('rich text constants', () => {
   it('exposes the full and inline tag allowlists with the inline set a subset of full', () => {

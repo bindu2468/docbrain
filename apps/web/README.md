@@ -1,6 +1,6 @@
-# @app-starter/web
+# @docbrain/web
 
-Next.js frontend application for the App Starter multi-tenant SaaS starter.
+Next.js frontend application for DocBrain.
 
 ## Tech Stack
 
@@ -32,7 +32,7 @@ Start the development server:
 
 ```bash
 # From root
-pnpm --filter @app-starter/web dev
+pnpm --filter @docbrain/web dev
 
 # Or from this directory
 pnpm dev
@@ -75,7 +75,7 @@ NODE_ENV=development
 Build the application for production:
 
 ```bash
-pnpm --filter @app-starter/web build
+pnpm --filter @docbrain/web build
 ```
 
 ### Production
@@ -83,7 +83,7 @@ pnpm --filter @app-starter/web build
 Start the production server:
 
 ```bash
-pnpm --filter @app-starter/web start
+pnpm --filter @docbrain/web start
 ```
 
 ## Project Structure
@@ -104,10 +104,10 @@ web/
 
 ## Using Shared Types
 
-Import shared types from `@app-starter/shared`:
+Import shared types from `@docbrain/shared`:
 
 ```typescript
-import { ApiResponse, ApiError } from '@app-starter/shared';
+import { ApiResponse, ApiError } from '@docbrain/shared';
 ```
 
 ## API Integration

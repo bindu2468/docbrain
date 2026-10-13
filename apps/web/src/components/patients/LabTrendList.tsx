@@ -1,5 +1,5 @@
 import { ArrowDownRight, ArrowRight, ArrowUpRight } from 'lucide-react';
-import type { LabTrend, LabTrendDirection } from '@app-starter/shared';
+import type { LabTrend, LabTrendDirection } from '@docbrain/shared';
 import { Badge } from '@/components/ui/badge';
 import { formatClinicalDate, recordAnchor } from '@/lib/clinical-format';
 import { cn } from '@/lib/utils';

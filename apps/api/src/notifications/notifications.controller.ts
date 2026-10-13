@@ -26,7 +26,7 @@ import {
   NotificationStatus,
 } from './types/notification.types';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 
 @Controller('notifications')
 @UseGuards(JwtAuthGuard)

@@ -1,7 +1,7 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { toast } from 'sonner';
-import { richTextToPlainText } from '@app-starter/shared';
+import { richTextToPlainText } from '@docbrain/shared';
 import {
   RichTextEditor,
   cleanPastedHtml,

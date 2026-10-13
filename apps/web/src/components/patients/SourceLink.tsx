@@ -1,5 +1,5 @@
 import { FileSearch } from 'lucide-react';
-import type { ClinicalSource } from '@app-starter/shared';
+import type { ClinicalSource } from '@docbrain/shared';
 import { sourceAnchor } from '@/lib/clinical-format';
 
 /** Links a brief item to the record it came from, further down the page. */

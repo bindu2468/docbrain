@@ -1,6 +1,6 @@
 # PostgreSQL Docker Setup
 
-This directory contains the Docker configuration for running PostgreSQL for the App Starter application.
+This directory contains the Docker configuration for running PostgreSQL for the DocBrain application.
 
 ## Quick Start
 
@@ -121,5 +121,5 @@ docker-compose up -d
 Then run migrations again:
 
 ```bash
-pnpm --filter @app-starter/api prisma:migrate
+pnpm --filter @docbrain/api prisma:migrate
 ```

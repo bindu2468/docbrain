@@ -22,7 +22,7 @@ import {
   isRichTextHtml,
   plainTextToRichTextHtml,
   richTextToPlainText,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 

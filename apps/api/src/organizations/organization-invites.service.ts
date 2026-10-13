@@ -5,7 +5,7 @@ import { OrganizationsService } from './organizations.service';
 import { AuthService } from '../auth/auth.service';
 // EmailService removed
 import { NotificationsService } from '../notifications/services/notifications.service';
-import { OrgRole } from '@app-starter/shared';
+import { OrgRole } from '@docbrain/shared';
 import { InviteStatus, OrgRole as PrismaOrganizationRole } from '@prisma/client';
 import * as crypto from 'crypto';
 import {

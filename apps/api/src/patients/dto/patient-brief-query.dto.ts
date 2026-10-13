@@ -1,5 +1,5 @@
 import { IsIn, IsOptional } from 'class-validator';
-import { MEDICAL_SPECIALTIES, MedicalSpecialty } from '@app-starter/shared';
+import { MEDICAL_SPECIALTIES, MedicalSpecialty } from '@docbrain/shared';
 
 export class PatientBriefQueryDto {
   /**

@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
-import { FULL_BIO_MAX_LENGTH } from '@app-starter/shared';
+import { FULL_BIO_MAX_LENGTH } from '@docbrain/shared';
 import { IsRichTextWithinLength } from './rich-text-length.validator';
 
 class TestBioDto {

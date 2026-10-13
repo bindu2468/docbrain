@@ -4,7 +4,7 @@ import { OrganizationInvitesService } from './organization-invites.service';
 import { AcceptInviteDto } from './dto/accept-invite.dto';
 import { SubmitEmailForInviteDto } from './dto/submit-email-for-invite.dto';
 import { VerifyInviteDto } from './dto/verify-invite.dto';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 
 describe('InvitesController', () => {
   let controller: InvitesController;

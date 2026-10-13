@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { MEDICAL_SPECIALTY_LABELS, type PatientRecordResponse } from '@app-starter/shared';
+import { MEDICAL_SPECIALTY_LABELS, type PatientRecordResponse } from '@docbrain/shared';
 import { Badge } from '@/components/ui/badge';
 import {
   Table,

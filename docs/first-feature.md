@@ -129,7 +129,7 @@ pnpm verify
 | It says                                  | It means                                                                                                                                                    |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Type error in `apps/web` about `dueDate` | The two halves disagree. This is the check doing its job — fix the mismatch rather than casting it away                                                     |
-| `@prisma/client` has no `dueDate`        | The generated client is stale: `pnpm --filter @app-starter/api exec prisma generate`                                                                        |
+| `@prisma/client` has no `dueDate`        | The generated client is stale: `pnpm --filter @docbrain/api exec prisma generate`                                                                        |
 | Drift detected                           | The schema changed with no migration — see [troubleshooting](./troubleshooting.md)                                                                          |
 | A failing service test                   | Read it before you change it. A test that fails because behaviour changed needs updating; a test that fails because the behaviour is wrong is doing its job |
 

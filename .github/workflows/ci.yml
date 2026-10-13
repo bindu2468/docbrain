@@ -32,7 +32,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Generate Prisma client
-        run: pnpm --filter @app-starter/api exec prisma generate
+        run: pnpm --filter @docbrain/api exec prisma generate
 
       - run: pnpm type-check
 
@@ -96,19 +96,19 @@ jobs:
         run: cp apps/api/.env.test.example apps/api/.env.test
 
       - name: Generate Prisma client
-        run: pnpm --filter @app-starter/api exec prisma generate
+        run: pnpm --filter @docbrain/api exec prisma generate
 
       # The API's jest globalSetup applies migrations and seeds; running it
       # here first surfaces a schema problem as a migration failure rather
       # than as a confusing test failure.
       - name: Apply migrations
-        run: pnpm --filter @app-starter/api exec prisma migrate deploy
+        run: pnpm --filter @docbrain/api exec prisma migrate deploy
 
       - name: API tests
-        run: pnpm --filter @app-starter/api test
+        run: pnpm --filter @docbrain/api test
 
       - name: Web tests
-        run: pnpm --filter @app-starter/web test
+        run: pnpm --filter @docbrain/web test
 
   e2e:
     name: API end-to-end
@@ -165,9 +165,9 @@ jobs:
         run: cp apps/api/.env.test.example apps/api/.env.test
 
       - name: Generate Prisma client
-        run: pnpm --filter @app-starter/api exec prisma generate
+        run: pnpm --filter @docbrain/api exec prisma generate
 
       - name: Apply migrations
-        run: pnpm --filter @app-starter/api exec prisma migrate deploy
+        run: pnpm --filter @docbrain/api exec prisma migrate deploy
 
-      - run: pnpm --filter @app-starter/api run test:e2e
+      - run: pnpm --filter @docbrain/api run test:e2e
