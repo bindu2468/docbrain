@@ -12,9 +12,15 @@ export class ScheduleQueryDto {
   @IsISO8601()
   to: string;
 
-  /** Only the caller's own appointments */
+  /**
+   * Only the caller's own appointments. Read from the raw query (`obj`), not
+   * `value`: the global ValidationPipe uses implicit conversion, which turns
+   * the string "false" into `true` before this transform runs.
+   */
   @IsOptional()
-  @Transform(({ value }) => value === true || value === 'true')
+  @Transform(
+    ({ obj }: { obj: Record<string, unknown> }) => obj.mine === true || obj.mine === 'true',
+  )
   @IsBoolean()
   mine?: boolean;
 }

@@ -1,13 +1,12 @@
 'use client';
 
 import { use, useState } from 'react';
-import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { CalendarDays, Loader2, Settings, UserPlus, Users } from 'lucide-react';
+import { Loader2, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { ClinicOverview } from '@/components/organizations/ClinicOverview';
 import { InviteOrganizationMembersDialog } from '@/components/organizations/InviteOrganizationMembersDialog';
 import { organizationsApi } from '@/lib/organizations-api';
 
@@ -52,44 +51,22 @@ export default function OrganizationPage({ params }: PageProps) {
   }
 
   return (
-    <PageContainer>
-      <div className="mx-auto max-w-4xl space-y-8 px-4 py-8">
+    <PageContainer variant="default">
+      <div className="mx-auto max-w-5xl space-y-8 px-4 py-8">
         <PageHeader title={organization.name} description={organization.description || undefined}>
-          <div className="flex flex-wrap gap-2">
-            <Button asChild>
-              <Link href={`/organizations/${organizationId}/schedule`}>
-                <CalendarDays className="mr-2 h-4 w-4" />
-                Schedule
-              </Link>
+          {canManage && (
+            <Button variant="outline" onClick={() => setInviteOpen(true)}>
+              <UserPlus className="mr-2 h-4 w-4" />
+              Invite
             </Button>
-            <Button variant="outline" asChild>
-              <Link href={`/organizations/${organizationId}/patients`}>
-                <Users className="mr-2 h-4 w-4" />
-                Patients
-              </Link>
-            </Button>
-            {canManage && (
-              <Button variant="outline" onClick={() => setInviteOpen(true)}>
-                <UserPlus className="mr-2 h-4 w-4" />
-                Invite
-              </Button>
-            )}
-            <Button variant="outline" asChild>
-              <Link href={`/organizations/${organizationId}/settings`}>
-                <Settings className="mr-2 h-4 w-4" />
-                Settings
-              </Link>
-            </Button>
-          </div>
+          )}
         </PageHeader>
 
-        {organization.location && (
-          <Card>
-            <CardContent className="py-4 text-sm text-muted-foreground">
-              {organization.location}
-            </CardContent>
-          </Card>
-        )}
+        <ClinicOverview
+          organizationId={organizationId}
+          role={roleInfo?.role}
+          location={organization.location}
+        />
       </div>
 
       <InviteOrganizationMembersDialog
