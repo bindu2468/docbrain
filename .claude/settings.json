@@ -28,7 +28,7 @@
       "Bash(git show:*)",
       "Bash(git branch:*)"
     ],
-    "ask": ["Bash(git push:*)", "Bash(pnpm --filter @app-starter/api run prisma:seed)"],
+    "ask": ["Bash(git push:*)", "Bash(pnpm --filter @docbrain/api run prisma:seed)"],
     "deny": [
       "Bash(pnpm exec prisma migrate reset:*)",
       "Bash(pnpm exec prisma db push:*)",
