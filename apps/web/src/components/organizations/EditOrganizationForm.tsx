@@ -123,7 +123,7 @@ export function EditOrganizationForm({
             <FormItem>
               <FormLabel>Organization name</FormLabel>
               <FormControl>
-                <Input placeholder="Acme Inc" {...field} />
+                <Input placeholder="Riverside Clinic" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
