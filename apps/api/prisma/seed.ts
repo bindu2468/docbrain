@@ -1,16 +1,15 @@
 /**
  * Development seed.
  *
- * Creates one demo organization with an owner, a member, and two projects,
- * and the synthetic Riverside Clinic used by the Patient Brain (see
- * seed-clinic.ts).
+ * Creates the two demo users and the synthetic Riverside Clinic they work in
+ * (see seed-clinic.ts).
  *
  * Idempotent — safe to run repeatedly. Records upsert on their natural keys,
  * so re-running updates rather than duplicates.
  *
  *   pnpm --filter @app-starter/api prisma:seed
  */
-import { PrismaClient, OrgRole, ProjectVisibility } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { Pool } from 'pg';
 import * as bcrypt from 'bcrypt';
@@ -48,7 +47,7 @@ const prisma = new PrismaClient({ adapter: new PrismaPg(pool) });
 
 const DEMO_PASSWORD = 'Password123!';
 
-async function seedDemoOrganization() {
+async function seedDemoUsers() {
   const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 10);
 
   const owner = await prisma.user.upsert({
@@ -76,52 +75,7 @@ async function seedDemoOrganization() {
     },
   });
 
-  const organization = await prisma.organization.upsert({
-    where: { slug: 'acme' },
-    update: {},
-    create: {
-      name: 'Acme Inc',
-      slug: 'acme',
-      description: 'Demo organization created by the seed script.',
-      timezone: 'UTC',
-    },
-  });
-
-  for (const [user, role] of [
-    [owner, OrgRole.OWNER],
-    [member, OrgRole.MEMBER],
-  ] as const) {
-    await prisma.organizationMember.upsert({
-      where: { userId_organizationId: { userId: user.id, organizationId: organization.id } },
-      update: { role },
-      create: { userId: user.id, organizationId: organization.id, role },
-    });
-  }
-
-  const projects = [
-    {
-      slug: 'website-redesign',
-      name: 'Website redesign',
-      description: 'Visible to everyone in the organization.',
-      visibility: ProjectVisibility.ORGANIZATION,
-    },
-    {
-      slug: 'q3-planning',
-      name: 'Q3 planning',
-      description: "Private to its creator — won't appear for other members.",
-      visibility: ProjectVisibility.PRIVATE,
-    },
-  ];
-
-  for (const project of projects) {
-    await prisma.project.upsert({
-      where: { organizationId_slug: { organizationId: organization.id, slug: project.slug } },
-      update: {},
-      create: { ...project, organizationId: organization.id, createdById: owner.id },
-    });
-  }
-
-  console.log(`Seeded organization "${organization.name}" with 2 users and 2 projects`);
+  console.log('Seeded demo users');
   console.log(`  owner@example.com / ${DEMO_PASSWORD}  (global admin)`);
   console.log(`  member@example.com / ${DEMO_PASSWORD}`);
 
@@ -129,7 +83,7 @@ async function seedDemoOrganization() {
 }
 
 async function main() {
-  await seedDemoOrganization();
+  await seedDemoUsers();
 }
 
 main()
