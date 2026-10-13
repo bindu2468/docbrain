@@ -1,7 +1,7 @@
 /**
  * Sync every patient in a clinic to the patient brain (HydraDB).
  *
- *   pnpm --filter @app-starter/api brain:sync [organization-slug]
+ *   pnpm --filter @docbrain/api brain:sync [organization-slug]
  *
  * Defaults to the seeded `riverside-clinic`. Run it after `prisma:seed`: the
  * seed rebuilds each patient's history with new ids, and this rebuilds the

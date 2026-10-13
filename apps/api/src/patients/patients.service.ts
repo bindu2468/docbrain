@@ -7,7 +7,7 @@ import {
   PatientListResponse,
   PatientRecordResponse,
   ScheduleResponse,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { PrismaService } from '../prisma/prisma.service';
 import { buildPatientBrief } from './brief/build-patient-brief';
 import {

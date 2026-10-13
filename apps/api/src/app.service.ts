@@ -16,14 +16,14 @@ export class AppService {
       return {
         status: 'ok',
         timestamp: new Date().toISOString(),
-        service: 'app-starter-api',
+        service: 'docbrain-api',
         database: 'connected',
       };
     } catch (error) {
       return {
         status: 'error',
         timestamp: new Date().toISOString(),
-        service: 'app-starter-api',
+        service: 'docbrain-api',
         database: 'disconnected',
         error: error instanceof Error ? error.message : 'Unknown error',
       };

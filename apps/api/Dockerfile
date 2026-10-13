@@ -3,7 +3,7 @@
 # Build Instructions:
 # - Build from the monorepo root, not from apps/api — pnpm workspaces need the
 #   root lockfile and pnpm-workspace.yaml:
-#     docker build -f apps/api/Dockerfile -t app-starter-api:latest .
+#     docker build -f apps/api/Dockerfile -t docbrain-api:latest .
 # - For Railway: set the build context to the monorepo root and the Dockerfile
 #   path to apps/api/Dockerfile.
 # - To build an x86_64 image from an ARM machine:

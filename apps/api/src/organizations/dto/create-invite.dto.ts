@@ -1,5 +1,5 @@
 import { IsOptional, IsEmail, MaxLength, IsEnum, IsNotEmpty } from 'class-validator';
-import { OrgRole } from '@app-starter/shared';
+import { OrgRole } from '@docbrain/shared';
 
 export class CreateInviteDto {
   @IsOptional()

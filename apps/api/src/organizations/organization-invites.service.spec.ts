@@ -6,7 +6,7 @@ import { OrganizationsService } from './organizations.service';
 import { AuthService } from '../auth/auth.service';
 import { NotificationsService } from '../notifications/services/notifications.service';
 import { InviteStatus, OrgRole as PrismaOrganizationRole } from '@prisma/client';
-import { OrgRole } from '@app-starter/shared';
+import { OrgRole } from '@docbrain/shared';
 import {
   InviteExpiredException,
   InviteCancelledException,

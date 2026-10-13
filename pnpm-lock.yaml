@@ -28,15 +28,15 @@ importers:
 
   apps/api:
     dependencies:
-      '@app-starter/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@aws-sdk/client-s3':
         specifier: ^3.974.0
         version: 3.974.0
       '@aws-sdk/s3-request-presigner':
         specifier: ^3.974.0
         version: 3.974.0
+      '@docbrain/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@hydradb/sdk':
         specifier: ^2.1.7
         version: 2.1.7
@@ -224,7 +224,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@app-starter/shared':
+      '@docbrain/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@hookform/resolvers':

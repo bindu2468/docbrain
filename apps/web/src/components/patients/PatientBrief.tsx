@@ -5,7 +5,7 @@ import {
   type BriefChange,
   type ChangeKind,
   type PatientBriefResponse,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { formatClinicalDate, formatClinicalDateTime, recordAnchor } from '@/lib/clinical-format';

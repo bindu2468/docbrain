@@ -1,4 +1,4 @@
-import { OrgRole } from '@app-starter/shared';
+import { OrgRole } from '@docbrain/shared';
 
 export interface OrganizationUserDto {
   id: string;

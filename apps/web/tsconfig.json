@@ -23,7 +23,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@app-starter/shared": ["../../packages/shared/src"]
+      "@docbrain/shared": ["../../packages/shared/src"]
     }
   },
   "include": [

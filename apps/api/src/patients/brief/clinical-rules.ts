@@ -9,7 +9,7 @@ import {
   SafetyFlag,
   SafetyFlagSeverity,
   TranscriptRecord,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { allergySource, diagnosisSource, medicationSource, transcriptSource } from './sources';
 
 /**

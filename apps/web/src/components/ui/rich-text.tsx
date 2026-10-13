@@ -9,7 +9,7 @@ import {
   isRichTextEmpty,
   isRichTextHtml,
   plainTextToRichTextHtml,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { cn } from '@/lib/utils';
 
 export type RichTextVariant = 'inline' | 'full';

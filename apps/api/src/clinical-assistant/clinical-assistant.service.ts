@@ -8,7 +8,7 @@ import {
   PatientBriefResponse,
   PatientRecordResponse,
   PatientSummaryResponse,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { RedisService } from '../redis/redis.service';
 import { PatientsService } from '../patients/patients.service';
 import { PatientBrainService } from '../patient-brain/patient-brain.service';

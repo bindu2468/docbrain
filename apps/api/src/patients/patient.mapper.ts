@@ -9,7 +9,7 @@ import {
   TranscriptRecord,
   TreatmentRecord,
   VisitRecord,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 
 /**
  * Prisma rows → API records. Kept apart from the service so the brief tests

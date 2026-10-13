@@ -2,7 +2,7 @@ import {
   MEDICAL_SPECIALTIES,
   MEDICAL_SPECIALTY_LABELS,
   type MedicalSpecialty,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import {
   Select,
   SelectContent,

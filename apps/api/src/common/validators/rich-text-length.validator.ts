@@ -1,5 +1,5 @@
 import { ValidationArguments, ValidationOptions, registerDecorator } from 'class-validator';
-import { richTextToPlainText } from '@app-starter/shared';
+import { richTextToPlainText } from '@docbrain/shared';
 
 /**
  * Validate a rich-text field against a **plain-text** character limit.

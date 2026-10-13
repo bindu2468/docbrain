@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import type { AssistantCitation } from '@app-starter/shared';
+import type { AssistantCitation } from '@docbrain/shared';
 import { sourceAnchor } from '@/lib/clinical-format';
 
 const MARKER_PATTERN = /(\[\d{1,3}\])/g;

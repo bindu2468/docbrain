@@ -1,4 +1,4 @@
-import { OrganizationResponse, OrgRole } from '@app-starter/shared';
+import { OrganizationResponse, OrgRole } from '@docbrain/shared';
 
 /**
  * Organization response DTO implementing shared OrganizationResponse interface

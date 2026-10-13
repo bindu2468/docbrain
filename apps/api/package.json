@@ -1,5 +1,5 @@
 {
-  "name": "@app-starter/api",
+  "name": "@docbrain/api",
   "version": "0.0.0",
   "private": true,
   "description": "App Starter API - NestJS backend",
@@ -27,7 +27,7 @@
     "brain:sync": "ts-node scripts/brain-sync.ts"
   },
   "dependencies": {
-    "@app-starter/shared": "workspace:*",
+    "@docbrain/shared": "workspace:*",
     "@aws-sdk/client-s3": "^3.974.0",
     "@aws-sdk/s3-request-presigner": "^3.974.0",
     "@hydradb/sdk": "^2.1.7",
@@ -128,7 +128,7 @@
     ],
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "^@app-starter/shared$": "<rootDir>/../../../packages/shared/src"
+      "^@docbrain/shared$": "<rootDir>/../../../packages/shared/src"
     }
   }
 }

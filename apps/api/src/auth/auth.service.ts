@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
 import { JwtUtils } from './jwt.utils';

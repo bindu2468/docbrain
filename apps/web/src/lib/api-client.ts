@@ -1,4 +1,4 @@
-import { ApiError } from '@app-starter/shared';
+import { ApiError } from '@docbrain/shared';
 import { authStorage } from './auth-storage';
 import { triggerAutoLogout } from '@/components/auth/AutoLogoutDialog';
 

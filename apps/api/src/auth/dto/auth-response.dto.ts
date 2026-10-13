@@ -1,4 +1,4 @@
-import { AuthResponse } from '@app-starter/shared';
+import { AuthResponse } from '@docbrain/shared';
 
 /**
  * Auth response DTO implementing shared AuthResponse interface

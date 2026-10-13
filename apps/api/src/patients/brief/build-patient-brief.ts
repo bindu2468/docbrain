@@ -7,7 +7,7 @@ import {
   PatientRecordResponse,
   SafetyFlag,
   VisitRecord,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import {
   buildLabTrends,
   findAllergyConflicts,

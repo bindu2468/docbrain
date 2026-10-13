@@ -20,7 +20,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "paths": {
-      "@app-starter/shared": ["../../packages/shared/src"],
+      "@docbrain/shared": ["../../packages/shared/src"],
       "@/*": ["src/*"]
     }
   },

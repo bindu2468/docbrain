@@ -9,7 +9,7 @@ import {
   ClinicalSource,
   ClinicalSourceType,
   PatientRecordResponse,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { PrismaService } from '../prisma/prisma.service';
 import { PatientsService } from '../patients/patients.service';
 import { buildPatientBrief } from '../patients/brief/build-patient-brief';

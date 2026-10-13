@@ -18,7 +18,7 @@ import { SubmitEmailForInviteDto } from './dto/submit-email-for-invite.dto';
 import { SubmitEmailResponseDto } from './dto/submit-email-response.dto';
 import { VerifyInviteDto } from './dto/verify-invite.dto';
 import { VerifyInviteResponseDto } from './dto/verify-invite-response.dto';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 
 @Controller('invites')
 export class InvitesController {

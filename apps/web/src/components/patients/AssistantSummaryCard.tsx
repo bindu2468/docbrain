@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { Loader2, MessageCircleQuestion, Sparkles } from 'lucide-react';
-import type { MedicalSpecialty } from '@app-starter/shared';
+import type { MedicalSpecialty } from '@docbrain/shared';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { clinicalAssistantApi } from '@/lib/clinical-assistant-api';

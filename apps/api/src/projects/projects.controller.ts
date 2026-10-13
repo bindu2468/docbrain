@@ -13,7 +13,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { EmailVerifiedGuard } from '../auth/email-verified.guard';
 import { ProjectsService } from './projects.service';

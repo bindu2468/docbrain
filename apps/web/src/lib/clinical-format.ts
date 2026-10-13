@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import type { ClinicalSource, ClinicalSourceType } from '@app-starter/shared';
+import type { ClinicalSource, ClinicalSourceType } from '@docbrain/shared';
 
 export const formatClinicalDate = (iso: string): string => format(new Date(iso), 'd MMM yyyy');
 

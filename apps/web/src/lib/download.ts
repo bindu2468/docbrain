@@ -1,6 +1,6 @@
 import { API_BASE_URL } from './api-client';
 import { authStorage } from './auth-storage';
-import { ApiError } from '@app-starter/shared';
+import { ApiError } from '@docbrain/shared';
 
 /**
  * Download an authenticated file from the API.

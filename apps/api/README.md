@@ -1,6 +1,6 @@
-# @app-starter/api
+# @docbrain/api
 
-NestJS backend API for the App Starter multi-tenant SaaS starter.
+NestJS backend API for DocBrain.
 
 ## Tech Stack
 
@@ -82,8 +82,8 @@ SMTP_HOST=localhost
 SMTP_PORT=1025
 SMTP_USER=
 SMTP_PASSWORD=
-SMTP_FROM_EMAIL=noreply@app-starter.local
-SMTP_FROM_NAME=App Starter
+SMTP_FROM_EMAIL=noreply@docbrain.local
+SMTP_FROM_NAME=DocBrain
 
 # Note: When running the API inside Docker, use SMTP_HOST=mailpit
 # When running locally, use SMTP_HOST=localhost
@@ -94,13 +94,13 @@ SMTP_FROM_NAME=App Starter
 3. **Generate Prisma Client:**
 
 ```bash
-pnpm --filter @app-starter/api prisma:generate
+pnpm --filter @docbrain/api prisma:generate
 ```
 
 4. **Run migrations:**
 
 ```bash
-pnpm --filter @app-starter/api prisma:migrate
+pnpm --filter @docbrain/api prisma:migrate
 ```
 
 This will create the initial migration and apply it to your database.
@@ -108,7 +108,7 @@ This will create the initial migration and apply it to your database.
 5. **(Optional) Seed the database:**
 
 ```bash
-pnpm --filter @app-starter/api prisma:seed
+pnpm --filter @docbrain/api prisma:seed
 ```
 
 ### Development
@@ -117,7 +117,7 @@ Start the API in development mode with hot reload:
 
 ```bash
 # From root
-pnpm --filter @app-starter/api dev
+pnpm --filter @docbrain/api dev
 
 # Or from this directory
 pnpm dev
@@ -138,7 +138,7 @@ The API will be available at `http://localhost:3001/api`
 Build the application:
 
 ```bash
-pnpm --filter @app-starter/api build
+pnpm --filter @docbrain/api build
 ```
 
 ### Production
@@ -146,14 +146,14 @@ pnpm --filter @app-starter/api build
 Start the production server:
 
 ```bash
-pnpm --filter @app-starter/api start:prod
+pnpm --filter @docbrain/api start:prod
 ```
 
 **Important:** Before starting in production, run:
 
 ```bash
-pnpm --filter @app-starter/api prisma:generate
-pnpm --filter @app-starter/api prisma:migrate:deploy
+pnpm --filter @docbrain/api prisma:generate
+pnpm --filter @docbrain/api prisma:migrate:deploy
 ```
 
 ## Project Structure

@@ -21,7 +21,7 @@ import { DomainMappingService } from './domain-mapping.service';
 import { CreateDomainMappingDto } from './dto/create-domain-mapping.dto';
 import { UpdateDomainMappingDto } from './dto/update-domain-mapping.dto';
 import { OrganizationsService } from '../organizations.service';
-import { TokenPayload, OrgRole } from '@app-starter/shared';
+import { TokenPayload, OrgRole } from '@docbrain/shared';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('domain-mappings')

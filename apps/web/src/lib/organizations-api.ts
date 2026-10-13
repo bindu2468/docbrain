@@ -4,7 +4,7 @@ import {
   UserOrganizationsResponse,
   OrganizationRoleResponse,
   OrgRole,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { apiClient, ApiError } from './api-client';
 
 export interface CreateOrganizationRequest {
@@ -35,7 +35,7 @@ export type {
   UserOrganizationsResponse,
   OrganizationRoleResponse,
 };
-export { OrgRole } from '@app-starter/shared';
+export { OrgRole } from '@docbrain/shared';
 
 export interface CreateInviteRequest {
   email?: string;

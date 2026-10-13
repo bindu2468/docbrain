@@ -1,8 +1,19 @@
-# App Starter
+# DocBrain
 
-A multi-tenant SaaS starter. NestJS and Next.js in a Turborepo, with the parts
-every SaaS needs already wired together: authentication, organizations with
-roles and invites, per-tenant custom domains, and a notification engine.
+Pre-visit patient briefs for doctors. Before walking into the room, a doctor
+opens a patient and sees allergies first, rule-based safety flags, what changed
+since their last visit, and lab trends — read through their own specialty, with
+every fact linked to the record it came from. An optional patient brain
+(HydraDB) and clinical assistant (Claude via OpenRouter) answer questions about
+the history with citations.
+
+This build holds synthetic patients only and is not approved for real patient
+data.
+
+DocBrain is built on a multi-tenant SaaS starter: NestJS and Next.js in a
+Turborepo, with authentication, organizations with roles and invites, per-tenant
+custom domains, and a notification engine already wired together. Each clinic
+is an organization.
 
 Billing is deliberately not included — payment provider and pricing model vary
 too much between products for a starter to choose for you.
@@ -159,7 +170,7 @@ against the caller before a decision can be made. See
 ## Making it yours
 
 1. **Rename.** Replace `app-starter` in `package.json` files, `docker-compose.yml`,
-   and the `@app-starter/*` import scope. Update `apps/api/src/config/branding.ts`.
+   and the `@docbrain/*` import scope. Update `apps/api/src/config/branding.ts`.
 2. **Replace Projects.** Delete `apps/api/src/projects` and
    `apps/web/src/app/organizations/[organizationId]/projects`, then build your
    own vertical on the same shape.
@@ -190,8 +201,8 @@ Run from the repository root:
 Target one package with `--filter`:
 
 ```bash
-pnpm --filter @app-starter/api dev
-pnpm --filter @app-starter/web test
+pnpm --filter @docbrain/api dev
+pnpm --filter @docbrain/web test
 ```
 
 ### Database
@@ -216,8 +227,8 @@ cp apps/web/.env.example apps/web/.env.local
 pnpm install
 docker compose up -d
 
-pnpm --filter @app-starter/api exec prisma migrate deploy
-pnpm --filter @app-starter/api run prisma:seed
+pnpm --filter @docbrain/api exec prisma migrate deploy
+pnpm --filter @docbrain/api run prisma:seed
 ```
 
 The root `.env` only sets the ports the containers publish; application

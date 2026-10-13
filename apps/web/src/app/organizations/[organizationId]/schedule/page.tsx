@@ -6,7 +6,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { addDays, format, isToday, startOfDay } from 'date-fns';
 import { toast } from 'sonner';
 import { CalendarDays, ChevronLeft, ChevronRight, Loader2, ShieldAlert } from 'lucide-react';
-import { MEDICAL_SPECIALTY_LABELS, type MedicalSpecialty } from '@app-starter/shared';
+import { MEDICAL_SPECIALTY_LABELS, type MedicalSpecialty } from '@docbrain/shared';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardHeader } from '@/components/ui/card';

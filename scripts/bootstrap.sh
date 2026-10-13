@@ -55,10 +55,10 @@ for _ in $(seq 1 30); do
 done
 
 info "Applying migrations"
-pnpm --filter @app-starter/api exec prisma migrate deploy
+pnpm --filter @docbrain/api exec prisma migrate deploy
 
 info "Seeding demo data"
-pnpm --filter @app-starter/api run prisma:seed
+pnpm --filter @docbrain/api run prisma:seed
 
 cat <<'DONE'
 

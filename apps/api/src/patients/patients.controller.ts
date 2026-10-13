@@ -18,7 +18,7 @@ import {
   PatientRecordResponse,
   ScheduleResponse,
   TokenPayload,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { EmailVerifiedGuard } from '../auth/email-verified.guard';
 import { PatientsService } from './patients.service';

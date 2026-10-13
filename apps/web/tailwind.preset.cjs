@@ -1,6 +1,6 @@
 /**
- * Tailwind preset for @app-starter/ds tokens (CommonJS for Tailwind config require).
- * Use in your tailwind.config: presets: [require('@app-starter/ds/tailwind.preset.cjs')]
+ * Tailwind preset for @docbrain/ds tokens (CommonJS for Tailwind config require).
+ * Use in your tailwind.config: presets: [require('@docbrain/ds/tailwind.preset.cjs')]
  */
 module.exports = {
   theme: {

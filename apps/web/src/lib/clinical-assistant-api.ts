@@ -4,7 +4,7 @@ import type {
   AssistantConfigResponse,
   MedicalSpecialty,
   PatientSummaryResponse,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { apiClient } from './api-client';
 
 /** Clinical assistant API: model-written answers and summaries, with citations. */

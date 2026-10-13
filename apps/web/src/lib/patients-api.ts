@@ -6,10 +6,10 @@ import type {
   PatientRecordResponse,
   ScheduleResponse,
   UpdateClinicianProfileRequest,
-} from '@app-starter/shared';
+} from '@docbrain/shared';
 import { apiClient } from './api-client';
 
-/** Patient Brain API. Types come from `@app-starter/shared` so both apps agree. */
+/** Patient Brain API. Types come from `@docbrain/shared` so both apps agree. */
 export class PatientsApi {
   async list(organizationId: string, search?: string): Promise<PatientListResponse> {
     const query = search ? `?${new URLSearchParams({ search })}` : '';

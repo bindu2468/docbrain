@@ -34,7 +34,7 @@ import { InviteResponseDto } from './dto/invite-response.dto';
 import { OrganizationInvitesResponseDto } from './dto/organization-invites-response.dto';
 import { CancelInviteResponseDto } from './dto/cancel-invite-response.dto';
 
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 import { PublicOrganizationDto } from './dto/public-organization.dto';
 
 @Controller('organizations')

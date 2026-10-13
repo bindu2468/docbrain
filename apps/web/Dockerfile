@@ -3,7 +3,7 @@
 # Build Instructions:
 # 
 # Option 1: Using the helper script (recommended)
-#   From apps/web directory: ./docker-build.sh preview.env app-starter-web:preview
+#   From apps/web directory: ./docker-build.sh preview.env docbrain-web:preview
 # 
 # Option 2: Manual build with build args
 #   From monorepo root:
@@ -12,7 +12,7 @@
 #     --build-arg NEXT_PUBLIC_POSTHOG_KEY=your-key \
 #     --build-arg NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com \
 #     --build-arg NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-key \
-#     -t app-starter-web:latest .
+#     -t docbrain-web:latest .
 # 
 # Option 3: Using .env file with build args (using a script)
 #   See docker-build.sh for an automated way to read .env and pass as build args
@@ -56,7 +56,7 @@ COPY apps/web ./apps/web
 RUN pnpm install --frozen-lockfile
 
 # Build the shared package first — the web app imports its compiled output.
-RUN pnpm --filter "@app-starter/shared" build && pnpm --filter "@app-starter/web" build
+RUN pnpm --filter "@docbrain/shared" build && pnpm --filter "@docbrain/web" build
 
 # Production stage
 FROM node:22-alpine AS production

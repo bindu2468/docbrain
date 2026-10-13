@@ -13,7 +13,7 @@ Run these three before anything else. Most problems are one of them.
 
 ```bash
 docker compose ps                                        # are the containers up?
-pnpm --filter @app-starter/api exec prisma migrate status # is the schema current?
+pnpm --filter @docbrain/api exec prisma migrate status # is the schema current?
 pnpm verify                                              # do types, lint, tests pass?
 ```
 
@@ -83,7 +83,7 @@ The generated client is stale. It is regenerated on `pnpm install` and on
 `pnpm build`, but not when you only edit `schema.prisma`:
 
 ```bash
-pnpm --filter @app-starter/api exec prisma generate
+pnpm --filter @docbrain/api exec prisma generate
 ```
 
 Restart the TypeScript server in your editor afterwards — VS Code caches the
@@ -97,19 +97,19 @@ else's migration.
 **If you pulled someone else's migration**, apply it:
 
 ```bash
-pnpm --filter @app-starter/api exec prisma migrate deploy
+pnpm --filter @docbrain/api exec prisma migrate deploy
 ```
 
 **If you changed `schema.prisma` yourself**, create the migration:
 
 ```bash
-pnpm --filter @app-starter/api exec prisma migrate dev --name describe_your_change
+pnpm --filter @docbrain/api exec prisma migrate dev --name describe_your_change
 ```
 
 **Do not reach for `prisma migrate reset`** as a first move. It drops the
 database and everything in it. It is the right command only when you are
 certain the local data is disposable — and in this project it usually is, since
-`pnpm --filter @app-starter/api run prisma:seed` rebuilds the demo data. Just
+`pnpm --filter @docbrain/api run prisma:seed` rebuilds the demo data. Just
 decide that deliberately rather than because a tool suggested it.
 
 ### The migration is already committed and wrong
@@ -123,7 +123,7 @@ for everyone else.
 Re-seed. It upserts, so it is safe to repeat:
 
 ```bash
-pnpm --filter @app-starter/api run prisma:seed
+pnpm --filter @docbrain/api run prisma:seed
 ```
 
 ```
@@ -155,7 +155,7 @@ up: `docker compose ps mailpit`.
 current:
 
 ```bash
-pnpm --filter @app-starter/shared run build
+pnpm --filter @docbrain/shared run build
 ```
 
 `pnpm verify` and `pnpm build` do this for you via Turborepo's task graph.

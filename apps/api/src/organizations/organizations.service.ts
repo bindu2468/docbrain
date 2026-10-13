@@ -5,7 +5,7 @@ import {
   BadRequestException,
   Logger,
 } from '@nestjs/common';
-import { OrgRole } from '@app-starter/shared';
+import { OrgRole } from '@docbrain/shared';
 import { OrgRole as PrismaOrganizationRole } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateOrganizationDto } from './dto/create-organization.dto';

@@ -1,7 +1,7 @@
 import { Controller, Get, Put, Delete, Param, Query, Request, UseGuards } from '@nestjs/common';
 import { InAppNotificationService } from './services/in-app-notification.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 
 @Controller('notifications/in-app')
 @UseGuards(JwtAuthGuard)

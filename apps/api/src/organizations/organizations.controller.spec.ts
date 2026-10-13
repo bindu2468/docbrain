@@ -4,7 +4,7 @@ import { OrganizationsService } from './organizations.service';
 import { OrganizationInvitesService } from './organization-invites.service';
 import { CreateOrganizationDto } from './dto/create-organization.dto';
 import { CreateInviteDto } from './dto/create-invite.dto';
-import { TokenPayload, OrgRole } from '@app-starter/shared';
+import { TokenPayload, OrgRole } from '@docbrain/shared';
 
 describe('OrganizationsController', () => {
   let controller: OrganizationsController;

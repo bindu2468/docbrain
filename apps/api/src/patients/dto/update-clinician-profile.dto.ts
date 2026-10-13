@@ -1,5 +1,5 @@
 import { IsIn, ValidateIf } from 'class-validator';
-import { MEDICAL_SPECIALTIES, MedicalSpecialty } from '@app-starter/shared';
+import { MEDICAL_SPECIALTIES, MedicalSpecialty } from '@docbrain/shared';
 
 export class UpdateClinicianProfileDto {
   /** Null clears the specialty, for non-clinical staff */

@@ -2,7 +2,7 @@ import { ForbiddenException } from '@nestjs/common';
 import { ExecutionContext } from '@nestjs/common';
 import { GlobalAdminGuard } from './global-admin.guard';
 import { PrismaService } from '../prisma/prisma.service';
-import { TokenPayload } from '@app-starter/shared';
+import { TokenPayload } from '@docbrain/shared';
 
 describe('GlobalAdminGuard', () => {
   let guard: GlobalAdminGuard;

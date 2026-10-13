@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { TokenPayload, TokenPair } from '@app-starter/shared';
+import { TokenPayload, TokenPair } from '@docbrain/shared';
 
 type SignAccessTokenOptions = {
   expiresIn: string;

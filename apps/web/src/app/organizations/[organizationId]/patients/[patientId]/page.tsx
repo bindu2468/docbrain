@@ -4,7 +4,7 @@ import { use, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, Loader2 } from 'lucide-react';
-import { MEDICAL_SPECIALTY_LABELS, type MedicalSpecialty } from '@app-starter/shared';
+import { MEDICAL_SPECIALTY_LABELS, type MedicalSpecialty } from '@docbrain/shared';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { PageContainer } from '@/components/layout/PageContainer';
